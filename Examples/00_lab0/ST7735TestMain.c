@@ -6,5 +6,5 @@ int main (void) {
 	GPIO_PORTF_DIR_R = 0x0E;
 	GPIO_PORTF_DEN_R = 0x0E;
 	
-	while(1) GPIO_PORTF_DATA_R = 0x08; // turn on red LED
+	while(1) GPIO_PORTF_DATA_R = 0x02; // turn on red LED
 }
