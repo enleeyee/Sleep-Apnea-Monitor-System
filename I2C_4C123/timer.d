@@ -1,0 +1,11 @@
+.\timer.o: ..\TivaWare_C_Series-2.2.0.295\driverlib\timer.c
+.\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\timer.o: .\inc/hw_ints.h
+.\timer.o: .\inc/hw_memmap.h
+.\timer.o: .\inc/hw_timer.h
+.\timer.o: .\inc/hw_types.h
+.\timer.o: .\inc/hw_sysctl.h
+.\timer.o: .\driverlib/debug.h
+.\timer.o: .\driverlib/interrupt.h
+.\timer.o: .\driverlib/timer.h

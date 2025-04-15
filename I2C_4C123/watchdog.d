@@ -1,0 +1,10 @@
+.\watchdog.o: ..\TivaWare_C_Series-2.2.0.295\driverlib\watchdog.c
+.\watchdog.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\watchdog.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\watchdog.o: .\inc/hw_ints.h
+.\watchdog.o: .\inc/hw_memmap.h
+.\watchdog.o: .\inc/hw_types.h
+.\watchdog.o: .\inc/hw_watchdog.h
+.\watchdog.o: .\driverlib/debug.h
+.\watchdog.o: .\driverlib/interrupt.h
+.\watchdog.o: .\driverlib/watchdog.h

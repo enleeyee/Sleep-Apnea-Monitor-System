@@ -1,0 +1,9 @@
+.\sysexc.o: ..\TivaWare_C_Series-2.2.0.295\driverlib\sysexc.c
+.\sysexc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\sysexc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\sysexc.o: .\inc/hw_ints.h
+.\sysexc.o: .\inc/hw_sysctl.h
+.\sysexc.o: .\inc/hw_sysexc.h
+.\sysexc.o: .\inc/hw_types.h
+.\sysexc.o: .\driverlib/debug.h
+.\sysexc.o: .\driverlib/interrupt.h

@@ -1,0 +1,91 @@
+Dependencies for Project 'I2C', Target 'I2C': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (.\startup.s)(0x67898895)(--cpu Cortex-M4 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123--pd "__UVISION_VERSION SETA 535" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1" --pd "_RTE_ SETA 1"--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\I2CTestMain.c)(0x67FE19DC)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I C:\TivaWare_C_Series-2.2.0.295\driverlib -I C:\TivaWare_C_Series-2.2.0.295\inc -I . --c99-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -DPART_TM4C123GH6PM-o .\i2ctestmain.o --omf_browse .\i2ctestmain.crf --depend .\i2ctestmain.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025E85C)
+I (hw_memmap.h)(0x67EEE0C4)
+I (hw_i2c.h)(0x67EEE0C4)
+I (hw_types.h)(0x67EEE0C5)
+I (sysctl.h)(0x67EEE0AA)
+I (gpio.h)(0x67EEE0AA)
+I (i2c.h)(0x67EF2188)
+I (pin_map.h)(0x67EEE0AA)
+I (ssd1306.h)(0x67EF318B)
+I (font.h)(0x67F8A53A)
+F (..\TivaWare_C_Series-2.2.0.295\driverlib\gpio.c)(0x67EEE0AA)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I C:\TivaWare_C_Series-2.2.0.295\driverlib -I C:\TivaWare_C_Series-2.2.0.295\inc -I . --c99-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -DPART_TM4C123GH6PM-o .\gpio.o --omf_browse .\gpio.crf --depend .\gpio.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025E85C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (.\inc/hw_gpio.h)(0x67EEE0C4)
+I (.\inc/hw_ints.h)(0x67EEE0C4)
+I (.\inc/hw_memmap.h)(0x67EEE0C4)
+I (.\inc/hw_sysctl.h)(0x67EEE0C4)
+I (.\inc/hw_types.h)(0x67EEE0C5)
+I (.\driverlib/debug.h)(0x67EEE0AA)
+I (.\driverlib/gpio.h)(0x67EEE0AA)
+I (.\driverlib/interrupt.h)(0x67EEE0AA)
+F (..\TivaWare_C_Series-2.2.0.295\driverlib\i2c.c)(0x67EF2642)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I C:\TivaWare_C_Series-2.2.0.295\driverlib -I C:\TivaWare_C_Series-2.2.0.295\inc -I . --c99-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -DPART_TM4C123GH6PM-o .\i2c.o --omf_browse .\i2c.crf --depend .\i2c.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025E85C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (.\inc/hw_i2c.h)(0x67EEE0C4)
+I (.\inc/hw_ints.h)(0x67EEE0C4)
+I (.\inc/hw_memmap.h)(0x67EEE0C4)
+I (.\inc/hw_sysctl.h)(0x67EEE0C4)
+I (.\inc/hw_types.h)(0x67EEE0C5)
+I (.\driverlib/debug.h)(0x67EEE0AA)
+I (.\driverlib/i2c.h)(0x67EEE0AA)
+I (.\driverlib/interrupt.h)(0x67EEE0AA)
+F (..\TivaWare_C_Series-2.2.0.295\driverlib\interrupt.c)(0x67EEE0AA)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I C:\TivaWare_C_Series-2.2.0.295\driverlib -I C:\TivaWare_C_Series-2.2.0.295\inc -I . --c99-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -DPART_TM4C123GH6PM-o .\interrupt.o --omf_browse .\interrupt.crf --depend .\interrupt.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025E85C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (.\inc/hw_ints.h)(0x67EEE0C4)
+I (.\inc/hw_nvic.h)(0x67EEE0C4)
+I (.\inc/hw_types.h)(0x67EEE0C5)
+I (.\driverlib/cpu.h)(0x67EEE0AA)
+I (.\driverlib/debug.h)(0x67EEE0AA)
+I (.\driverlib/interrupt.h)(0x67EEE0AA)
+F (..\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.c)(0x67EEE0AA)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I C:\TivaWare_C_Series-2.2.0.295\driverlib -I C:\TivaWare_C_Series-2.2.0.295\inc -I . --c99-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -DPART_TM4C123GH6PM-o .\sysctl.o --omf_browse .\sysctl.crf --depend .\sysctl.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025E85C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (.\inc/hw_ints.h)(0x67EEE0C4)
+I (.\inc/hw_nvic.h)(0x67EEE0C4)
+I (.\inc/hw_sysctl.h)(0x67EEE0C4)
+I (.\inc/hw_types.h)(0x67EEE0C5)
+I (.\inc/hw_flash.h)(0x67EEE0C4)
+I (.\driverlib/cpu.h)(0x67EEE0AA)
+I (.\driverlib/debug.h)(0x67EEE0AA)
+I (.\driverlib/interrupt.h)(0x67EEE0AA)
+I (.\driverlib/sysctl.h)(0x67EEE0AA)
+F (.\ssd1306.c)(0x67F8A89F)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I C:\TivaWare_C_Series-2.2.0.295\driverlib -I C:\TivaWare_C_Series-2.2.0.295\inc -I . --c99-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -DPART_TM4C123GH6PM-o .\ssd1306.o --omf_browse .\ssd1306.crf --depend .\ssd1306.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (C:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\tm4c123gh6pm.h)(0x551052AC)
+I (C:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h)(0x60D4ADC2)
+I (C:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x60D4ADC2)
+I (C:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x60D4ADC2)
+I (C:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x60D4ADC2)
+I (C:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h)(0x60D4ADC2)
+I (C:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\system_TM4C123.h)(0x51B75486)
+I (i2c.h)(0x67EF2188)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025E85C)
+I (ssd1306.h)(0x67EF318B)
+I (font.h)(0x67F8A53A)
+F (.\ssd1306.h)(0x67EF318B)()
+F (.\font.c)(0x67F8B7BC)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I C:\TivaWare_C_Series-2.2.0.295\driverlib -I C:\TivaWare_C_Series-2.2.0.295\inc -I . --c99-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -DPART_TM4C123GH6PM-o .\font.o --omf_browse .\font.crf --depend .\font.d)
+I (font.h)(0x67F8A53A)
+F (.\i2c.h)(0x67EF2188)()
+F (.\comp.c)(0x67EEE0AA)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I C:\TivaWare_C_Series-2.2.0.295\driverlib -I C:\TivaWare_C_Series-2.2.0.295\inc -I . --c99-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -DPART_TM4C123GH6PM-o .\comp.o --omf_browse .\comp.crf --depend .\comp.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025E85C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (inc/hw_comp.h)(0x67EEE0C4)
+I (inc/hw_ints.h)(0x67EEE0C4)
+I (inc/hw_memmap.h)(0x67EEE0C4)
+I (inc/hw_types.h)(0x67EEE0C5)
+I (driverlib/comp.h)(0x67EEE0AA)
+I (driverlib/debug.h)(0x67EEE0AA)
+I (driverlib/interrupt.h)(0x67EEE0AA)
+F (.\cpu.c)(0x67EEE0AA)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I C:\TivaWare_C_Series-2.2.0.295\driverlib -I C:\TivaWare_C_Series-2.2.0.295\inc -I . --c99-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -DPART_TM4C123GH6PM-o .\cpu.o --omf_browse .\cpu.crf --depend .\cpu.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (driverlib/cpu.h)(0x67EEE0AA)
+F (.\sw_crc.c)(0x67EEE0AA)(-c --cpu Cortex-M4 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I C:\TivaWare_C_Series-2.2.0.295\driverlib -I C:\TivaWare_C_Series-2.2.0.295\inc -I . --c99-I.\RTE\_I2C-IC:\Users\carso\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\carso\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -DPART_TM4C123GH6PM-o .\sw_crc.o --omf_browse .\sw_crc.crf --depend .\sw_crc.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (driverlib/sw_crc.h)(0x67EEE0AA)
