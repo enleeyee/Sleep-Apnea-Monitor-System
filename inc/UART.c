@@ -44,19 +44,19 @@
 // Input: none
 // Output: none
 void UART_Init(void){
-  SYSCTL_RCGCUART_R |= 0x01;            // activate UART0
-  SYSCTL_RCGCGPIO_R |= 0x01;            // activate port A
-  UART0_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
-  UART0_IBRD_R = 43;                    // IBRD = int(80,000,000 / (16 * 115,200)) = int(43.403)
-  UART0_FBRD_R = 26;                    // FBRD = round(0.4028 * 64 ) = 26
+  SYSCTL_RCGCUART_R |= 0x02;            // activate UART1
+  SYSCTL_RCGCGPIO_R |= 0x02;            // activate port B
+  UART1_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
+  UART1_IBRD_R = 43;                    // IBRD = int(80,000,000 / (16 * 115,200)) = int(43.403)
+  UART1_FBRD_R = 26;                    // FBRD = round(0.4028 * 64 ) = 26
                                         // 8 bit word length (no parity bits, one stop bit, FIFOs)
-  UART0_LCRH_R = (UART_LCRH_WLEN_8|UART_LCRH_FEN);
-  UART0_CTL_R |= UART_CTL_UARTEN;       // enable UART
-  GPIO_PORTA_AFSEL_R |= 0x03;           // enable alt funct on PA1-0
-  GPIO_PORTA_DEN_R |= 0x03;             // enable digital I/O on PA1-0
+  UART1_LCRH_R = (UART_LCRH_WLEN_8|UART_LCRH_FEN);
+  UART1_CTL_R |= UART_CTL_UARTEN;       // enable UART
+  GPIO_PORTB_AFSEL_R |= 0x03;           // enable alt funct on PA1-0
+  GPIO_PORTB_DEN_R |= 0x03;             // enable digital I/O on PA1-0
                                         // configure PA1-0 as UART
-  GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R&0xFFFFFF00)+0x00000011;
-  GPIO_PORTA_AMSEL_R &= ~0x03;          // disable analog functionality on PA
+  GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFFFF00)+0x00000011;
+  GPIO_PORTB_AMSEL_R &= ~0x03;          // disable analog functionality on PA
 }
 
 //------------UART_InChar------------
@@ -64,16 +64,16 @@ void UART_Init(void){
 // Input: none
 // Output: ASCII code for key typed
 char UART_InChar(void){
-  while((UART0_FR_R&UART_FR_RXFE) != 0);
-  return((char)(UART0_DR_R&0xFF));
+  while((UART1_FR_R&UART_FR_RXFE) != 0);
+  return((char)(UART1_DR_R&0xFF));
 }
 //------------UART_OutChar------------
 // Output 8-bit to serial port
 // Input: letter is an 8-bit ASCII character to be transferred
 // Output: none
 void UART_OutChar(char data){
-  while((UART0_FR_R&UART_FR_TXFF) != 0);
-  UART0_DR_R = data;
+  while((UART1_FR_R&UART_FR_TXFF) != 0);
+  UART1_DR_R = data;
 }
 
 //------------UART_OutString------------
