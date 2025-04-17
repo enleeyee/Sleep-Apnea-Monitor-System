@@ -408,6 +408,16 @@
               <FileType>1</FileType>
               <FilePath>..\inc\SysTick.c</FilePath>
             </File>
+            <File>
+              <FileName>I2C0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\I2C0.c</FilePath>
+            </File>
+            <File>
+              <FileName>MAX30102.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MAX30102.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
