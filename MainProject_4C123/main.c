@@ -4,6 +4,8 @@
 #include "../inc/PLL.h"
 #include "../inc/SysTick.h"
 #include "../inc/UART.h"
+#include "../OLED_4C123/font.h"
+#include "../OLED_4C123/ssd1306.h"
 
 // Hardware CP2102 to TM4C123: 
 // TXD connected to PB0
@@ -34,9 +36,17 @@ int main(void){
     // Read IR data from FIFO
     uint16_t irValue = MAX30102_ReadIR();
 
+		// UART Computer Display
     UART_OutString("IR = ");
     UART_OutUDec(irValue);
     OutCRLF();
+		
+		// OLED Display
+		char buffer[16];
+    sprintf(buffer, "IR: %u", irValue);     // Format string
+
+    OLED_clearDisplay();                    // Clear previous frame
+    OLED_sendStrXY(buffer, 0, 0);           // Display on OLED at (0,0)
 
     SysTick_Wait10ms(10); // 1-second readable delay
   }

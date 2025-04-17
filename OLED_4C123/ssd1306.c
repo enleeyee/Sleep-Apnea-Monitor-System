@@ -5,7 +5,6 @@
 #include "font.h"
 #include <stdbool.h>
 
-
 #define SSD1306_I2C_ADDRESS 0x3D
 
 void OLED_command(uint8_t cmd);
