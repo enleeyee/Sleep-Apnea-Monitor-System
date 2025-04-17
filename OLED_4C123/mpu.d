@@ -1,9 +1,0 @@
-.\mpu.o: ..\TivaWare_C_Series-2.2.0.295\driverlib\mpu.c
-.\mpu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\mpu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\mpu.o: .\inc/hw_ints.h
-.\mpu.o: .\inc/hw_nvic.h
-.\mpu.o: .\inc/hw_types.h
-.\mpu.o: .\driverlib/debug.h
-.\mpu.o: .\driverlib/interrupt.h
-.\mpu.o: .\driverlib/mpu.h

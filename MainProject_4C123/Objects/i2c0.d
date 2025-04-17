@@ -1,3 +1,0 @@
-.\objects\i2c0.o: ..\inc\I2C0.c
-.\objects\i2c0.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\i2c0.o: ..\inc\../inc/tm4c123gh6pm.h

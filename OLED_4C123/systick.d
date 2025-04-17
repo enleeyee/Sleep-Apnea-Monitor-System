@@ -1,9 +1,0 @@
-.\systick.o: ..\TivaWare_C_Series-2.2.0.295\driverlib\systick.c
-.\systick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\systick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\systick.o: .\inc/hw_ints.h
-.\systick.o: .\inc/hw_nvic.h
-.\systick.o: .\inc/hw_types.h
-.\systick.o: .\driverlib/debug.h
-.\systick.o: .\driverlib/interrupt.h
-.\systick.o: .\driverlib/systick.h

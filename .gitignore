@@ -15,8 +15,8 @@
 *.o
 *.dep
 
-# Output directories
-/Objects/
-/Listings/
-/Debug/
-/Release/
+# Ignore build folders
+**/Objects/
+**/Listings/
+**/Debug/
+**/Release/

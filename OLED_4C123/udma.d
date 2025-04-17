@@ -1,9 +1,0 @@
-.\udma.o: ..\TivaWare_C_Series-2.2.0.295\driverlib\udma.c
-.\udma.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\udma.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\udma.o: .\inc/hw_sysctl.h
-.\udma.o: .\inc/hw_types.h
-.\udma.o: .\inc/hw_udma.h
-.\udma.o: .\driverlib/debug.h
-.\udma.o: .\driverlib/interrupt.h
-.\udma.o: .\driverlib/udma.h
