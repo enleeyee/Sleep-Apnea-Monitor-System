@@ -1,0 +1,22 @@
+# Keil uVision user-specific files
+*.uvguix.*
+*.uvoptx
+*.bak
+*.uvgui.*
+
+# Temporary files
+*.tmp
+*.log
+*.lst
+*.map
+*.axf
+*.crf
+*.d
+*.o
+*.dep
+
+# Output directories
+/Objects/
+/Listings/
+/Debug/
+/Release/
