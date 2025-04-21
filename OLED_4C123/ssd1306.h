@@ -33,7 +33,14 @@
 
 
 typedef uint8_t bitmap_t[8][128];
+
+void I2C1_Write(uint8_t slaveAddr, uint8_t reg, uint8_t data);
+void I2C1_Init(void);
+void I2C1_WriteByte(uint8_t deviceAddr, uint8_t controlByte, uint8_t dataByte);
+
 void OLED_Init(void);
+void OLED_TurnOn(void);
+void OLED_command(uint8_t cmd);
 void OLED_sendStrXY( char *string, int X, int Y);
 void OLED_setXY(unsigned char row,unsigned char col);
 void OLED_sendCharXY(unsigned char data, int X, int Y);
@@ -43,6 +50,7 @@ void OLED_displayOff(void);
 void OLED_clearDisplay(void);
 void OLED_resetDisplay(void);
 void OLED_printBigNumber(char string, int X, int Y);
+void OLED_data(uint8_t data);
 
 // Em teste
 void OLED_setPixelXY(unsigned char X, unsigned char Y);

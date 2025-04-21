@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\I2C.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\I2C.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Apr 15 07:20:57 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Apr 21 01:20:53 2025
 <BR><P>
 <H3>Maximum Stack Usage =         80 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; OLED_sendStrXY &rArr; OLED_sendCharXY &rArr; OLED_setXY &rArr; OLED_command &rArr; I2C0_Write
+main &rArr; OLED_sendStrXY &rArr; OLED_sendCharXY &rArr; OLED_setXY &rArr; OLED_command &rArr; I2C1_Write
 <P>
 <H3>
 Functions with no stack information
@@ -634,7 +634,7 @@ Global Symbols
 <P><STRONG><a name="[89]"></a>GPIOPinConfigure</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, gpio.o(i.GPIOPinConfigure))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIOPinConfigure
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Init
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Init
 </UL>
 
 <P><STRONG><a name="[83]"></a>GPIOPinTypeI2C</STRONG> (Thumb, 30 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeI2C))
@@ -643,7 +643,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Init
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Init
 </UL>
 
 <P><STRONG><a name="[86]"></a>GPIOPinTypeI2CSCL</STRONG> (Thumb, 30 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeI2CSCL))
@@ -652,11 +652,11 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Init
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Init
 </UL>
 
-<P><STRONG><a name="[87]"></a>I2C0_Init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, i2ctestmain.o(i.I2C0_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = I2C0_Init &rArr; GPIOPinTypeI2CSCL &rArr; GPIOPadConfigSet
+<P><STRONG><a name="[87]"></a>I2C1_Init</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, ssd1306.o(i.I2C1_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = I2C1_Init &rArr; GPIOPinTypeI2CSCL &rArr; GPIOPadConfigSet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
@@ -668,8 +668,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8c]"></a>I2C0_Write</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, ssd1306.o(i.I2C0_Write))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = I2C0_Write
+<P><STRONG><a name="[8c]"></a>I2C1_Write</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, ssd1306.o(i.I2C1_Write))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = I2C1_Write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2CMasterSlaveAddrSet
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2CMasterDataPut
@@ -680,8 +680,8 @@ Global Symbols
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_command
 </UL>
 
-<P><STRONG><a name="[91]"></a>I2C0_WriteByte</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, i2ctestmain.o(i.I2C0_WriteByte))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = I2C0_WriteByte
+<P><STRONG><a name="[91]"></a>I2C1_WriteByte</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, ssd1306.o(i.I2C1_WriteByte))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = I2C1_WriteByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2CMasterSlaveAddrSet
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2CMasterDataPut
@@ -692,18 +692,18 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[90]"></a>I2CMasterBusy</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, i2c.o(i.I2CMasterBusy))
-<BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_WriteByte
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Write
+<BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_WriteByte
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Write
 </UL>
 
 <P><STRONG><a name="[8f]"></a>I2CMasterControl</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, i2c.o(i.I2CMasterControl))
-<BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_WriteByte
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Write
+<BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_WriteByte
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Write
 </UL>
 
 <P><STRONG><a name="[8e]"></a>I2CMasterDataPut</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, i2c.o(i.I2CMasterDataPut))
-<BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_WriteByte
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Write
+<BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_WriteByte
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Write
 </UL>
 
 <P><STRONG><a name="[92]"></a>I2CMasterEnable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, i2c.o(i.I2CMasterEnable))
@@ -715,32 +715,32 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2CMasterEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Init
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Init
 </UL>
 
 <P><STRONG><a name="[8d]"></a>I2CMasterSlaveAddrSet</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, i2c.o(i.I2CMasterSlaveAddrSet))
-<BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_WriteByte
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Write
+<BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_WriteByte
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Write
 </UL>
 
 <P><STRONG><a name="[93]"></a>OLED_Init</STRONG> (Thumb, 172 bytes, Stack size 8 bytes, ssd1306.o(i.OLED_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = OLED_Init &rArr; OLED_command &rArr; I2C0_Write
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = OLED_Init &rArr; OLED_command &rArr; I2C1_Write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_command
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[95]"></a>OLED_TurnOn</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, i2ctestmain.o(i.OLED_TurnOn))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = OLED_TurnOn &rArr; I2C0_WriteByte
+<P><STRONG><a name="[95]"></a>OLED_TurnOn</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, ssd1306.o(i.OLED_TurnOn))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = OLED_TurnOn &rArr; I2C1_WriteByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_WriteByte
+<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_WriteByte
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[96]"></a>OLED_clearDisplay</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, ssd1306.o(i.OLED_clearDisplay))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = OLED_clearDisplay &rArr; OLED_data &rArr; I2C0_Write
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = OLED_clearDisplay &rArr; OLED_data &rArr; I2C1_Write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_data
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_command
@@ -749,26 +749,26 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[94]"></a>OLED_command</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, ssd1306.o(i.OLED_command))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = OLED_command &rArr; I2C0_Write
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = OLED_command &rArr; I2C1_Write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Write
+<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_clearDisplay
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_setXY
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_clearDisplay
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_setXY
 </UL>
 
 <P><STRONG><a name="[97]"></a>OLED_data</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, ssd1306.o(i.OLED_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = OLED_data &rArr; I2C0_Write
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = OLED_data &rArr; I2C1_Write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Write
+<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_clearDisplay
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_sendCharXY
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_sendCharXY
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_clearDisplay
 </UL>
 
 <P><STRONG><a name="[98]"></a>OLED_sendCharXY</STRONG> (Thumb, 72 bytes, Stack size 24 bytes, ssd1306.o(i.OLED_sendCharXY))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = OLED_sendCharXY &rArr; OLED_setXY &rArr; OLED_command &rArr; I2C0_Write
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = OLED_sendCharXY &rArr; OLED_setXY &rArr; OLED_command &rArr; I2C1_Write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_setXY
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_data
@@ -777,7 +777,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9a]"></a>OLED_sendStrXY</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, ssd1306.o(i.OLED_sendStrXY))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = OLED_sendStrXY &rArr; OLED_sendCharXY &rArr; OLED_setXY &rArr; OLED_command &rArr; I2C0_Write
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = OLED_sendStrXY &rArr; OLED_sendCharXY &rArr; OLED_setXY &rArr; OLED_command &rArr; I2C1_Write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_sendCharXY
 </UL>
@@ -785,7 +785,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[99]"></a>OLED_setXY</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, ssd1306.o(i.OLED_setXY))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = OLED_setXY &rArr; OLED_command &rArr; I2C0_Write
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = OLED_setXY &rArr; OLED_command &rArr; I2C1_Write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_command
 </UL>
@@ -795,7 +795,7 @@ Global Symbols
 <P><STRONG><a name="[8a]"></a>SysCtlClockGet</STRONG> (Thumb, 324 bytes, Stack size 20 bytes, sysctl.o(i.SysCtlClockGet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SysCtlClockGet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Init
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Init
 </UL>
 
 <P><STRONG><a name="[9b]"></a>SysCtlClockSet</STRONG> (Thumb, 280 bytes, Stack size 24 bytes, sysctl.o(i.SysCtlClockSet))
@@ -809,7 +809,7 @@ Global Symbols
 <P><STRONG><a name="[88]"></a>SysCtlPeripheralEnable</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, sysctl.o(i.SysCtlPeripheralEnable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SysCtlPeripheralEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Init
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Init
 </UL>
 
 <P><STRONG><a name="[a4]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
@@ -819,15 +819,15 @@ Global Symbols
 <P><STRONG><a name="[a6]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[7c]"></a>main</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, i2ctestmain.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = main &rArr; OLED_sendStrXY &rArr; OLED_sendCharXY &rArr; OLED_setXY &rArr; OLED_command &rArr; I2C0_Write
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = main &rArr; OLED_sendStrXY &rArr; OLED_sendCharXY &rArr; OLED_setXY &rArr; OLED_command &rArr; I2C1_Write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_sendStrXY
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_clearDisplay
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_TurnOn
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C0_Init
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C1_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL><P>

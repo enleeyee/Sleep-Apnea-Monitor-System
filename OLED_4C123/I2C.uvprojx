@@ -408,49 +408,44 @@
               <FilePath>.\ssd1306.h</FilePath>
             </File>
             <File>
+              <FileName>font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\font.h</FilePath>
+            </File>
+            <File>
               <FileName>font.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\font.c</FilePath>
             </File>
             <File>
-              <FileName>i2c.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\i2c.h</FilePath>
-            </File>
-            <File>
-              <FileName>comp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\comp.c</FilePath>
-            </File>
-            <File>
-              <FileName>cpu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\cpu.c</FilePath>
-            </File>
-            <File>
-              <FileName>sw_crc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\sw_crc.c</FilePath>
-            </File>
-            <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\driverlib\gpio.c</FilePath>
+              <FilePath>..\driverlib\gpio.c</FilePath>
             </File>
             <File>
               <FileName>i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\driverlib\i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>interrupt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\driverlib\interrupt.c</FilePath>
+              <FilePath>..\driverlib\i2c.c</FilePath>
             </File>
             <File>
               <FileName>sysctl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\driverlib\sysctl.c</FilePath>
+              <FilePath>..\driverlib\sysctl.c</FilePath>
+            </File>
+            <File>
+              <FileName>pin_map.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\driverlib\pin_map.h</FilePath>
+            </File>
+            <File>
+              <FileName>interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driverlib\interrupt.c</FilePath>
+            </File>
+            <File>
+              <FileName>cpu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driverlib\cpu.c</FilePath>
             </File>
           </Files>
         </Group>
