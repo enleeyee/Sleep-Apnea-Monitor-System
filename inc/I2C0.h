@@ -70,3 +70,5 @@ uint32_t I2C_Send2(int8_t slave, uint8_t data1, uint8_t data2);
 // Used to change the contents of the pointer register
 // Returns 0 if successful, nonzero if error
 uint32_t I2C_Send3(int8_t slave, uint8_t data1, uint8_t data2, uint8_t data3);
+
+void I2C_DebugStatus(void);

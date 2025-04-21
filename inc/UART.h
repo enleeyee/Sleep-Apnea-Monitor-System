@@ -124,3 +124,8 @@ void UART_InString(char *bufPt, uint16_t max);
 // Output: none
 void Output_Init(void);
 
+//---------------------OutCRLF---------------------
+// Output a CR,LF to UART to go to a new line
+// Input: none
+// Output: none
+void OutCRLF(void);

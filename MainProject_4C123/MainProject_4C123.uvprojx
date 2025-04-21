@@ -10,6 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pArmCC>5060960::V5.06 update 7 (build 960)::.\ARMCC</pArmCC>
       <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
@@ -196,7 +197,7 @@
             <RoSelD>3</RoSelD>
             <RwSelD>3</RwSelD>
             <CodeSel>0</CodeSel>
-            <OptFeed>0</OptFeed>
+            <OptFeed>1</OptFeed>
             <NoZi1>0</NoZi1>
             <NoZi2>0</NoZi2>
             <NoZi3>0</NoZi3>
@@ -336,8 +337,8 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls>--C99</MiscControls>
-              <Define>rvmdk PART_LM4F120H5QR</Define>
+              <MiscControls>--c99 -DTARGET_IS_TM4C123_RB1</MiscControls>
+              <Define>PART_TM4C123GH6PM</Define>
               <Undefine></Undefine>
               <IncludePath>..;..\..\..</IncludePath>
             </VariousControls>
@@ -414,14 +415,39 @@
               <FilePath>..\inc\I2C0.c</FilePath>
             </File>
             <File>
+              <FileName>GPIO_PortB_Init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GPIO_PortB_Init.c</FilePath>
+            </File>
+            <File>
+              <FileName>MAX30102.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MAX30102.h</FilePath>
+            </File>
+            <File>
               <FileName>MAX30102.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\MAX30102.c</FilePath>
             </File>
             <File>
+              <FileName>ssd1306.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ssd1306.h</FilePath>
+            </File>
+            <File>
               <FileName>ssd1306.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\OLED_4C123\ssd1306.c</FilePath>
+              <FilePath>.\ssd1306.c</FilePath>
+            </File>
+            <File>
+              <FileName>font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\font.h</FilePath>
+            </File>
+            <File>
+              <FileName>font.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\font.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -444,5 +470,14 @@
     </components>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>MainProject_4C123</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

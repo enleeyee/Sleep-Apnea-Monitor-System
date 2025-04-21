@@ -28,6 +28,7 @@
 // ADD0 pin of TMP102 thermometer connected to GND
 #include <stdint.h>
 #include "../inc/tm4c123gh6pm.h"
+#include "../inc/UART.h"
 
 
 #define I2C_MCS_ACK             0x00000008  // Data Acknowledge Enable
@@ -40,19 +41,16 @@
 #define I2C_MCS_BUSY            0x00000001  // I2C Busy
 #define I2C_MCR_MFE             0x00000010  // I2C Master Function Enable
 
+#define I2C_ADRACK 0x04
+#define I2C_DATACK 0x08
+#define I2C_ERROR  0x02
+
 #define MAXRETRIES              5           // number of receive attempts before giving up
 // 100 kHz assuming 80 MHz bus clock
 void I2C_Init(void){
   SYSCTL_RCGCI2C_R |= 0x0001;           // activate I2C0
-  SYSCTL_RCGCGPIO_R |= 0x0002;          // activate port B
   while((SYSCTL_PRGPIO_R&0x0002) == 0){};// ready?
 
-  GPIO_PORTB_AFSEL_R |= 0x0C;           // 3) enable alt funct on PB2,3
-  GPIO_PORTB_ODR_R |= 0x08;             // 4) enable open drain on PB3 only
-  GPIO_PORTB_DEN_R |= 0x0C;             // 5) enable digital I/O on PB2,3
-                                        // 6) configure PB2,3 as I2C
-  GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFF00FF)+0x00003300;
-  GPIO_PORTB_AMSEL_R &= ~0x0C;          // 7) disable analog functionality on PB2,3
   I2C0_MCR_R = I2C_MCR_MFE;      // 9) master function enable
   I2C0_MTPR_R = 39;              // 8) configure for 100 kbps clock
   // 20*(TPR+1)*20ns   = 10us, with TPR=24, 50 MHz bus clock
@@ -230,4 +228,14 @@ uint32_t I2C_Send3(int8_t slave, uint8_t data1, uint8_t data2, uint8_t data3){
   while(I2C0_MCS_R&I2C_MCS_BUSY){};// wait for transmission done
                                           // return error bits
   return (I2C0_MCS_R&(I2C_MCS_DATACK|I2C_MCS_ADRACK|I2C_MCS_ERROR));
+}
+
+void I2C_DebugStatus(void){
+  uint32_t s = I2C0_MCS_R;
+  UART_OutString("I2C STAT=0x");
+  UART_OutUHex(s);
+  UART_OutString(s & I2C_ADRACK ? " ADRACK" : "");
+  UART_OutString(s & I2C_DATACK ? " DATACK" : "");
+  UART_OutString(s & I2C_ERROR  ? " ERROR"  : "");
+  OutCRLF();
 }

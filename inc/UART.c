@@ -45,18 +45,14 @@
 // Output: none
 void UART_Init(void){
   SYSCTL_RCGCUART_R |= 0x02;            // activate UART1
-  SYSCTL_RCGCGPIO_R |= 0x02;            // activate port B
+	while((SYSCTL_PRUART_R & 0x02) == 0){}; // wait for UART1 ready
+		
   UART1_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
   UART1_IBRD_R = 43;                    // IBRD = int(80,000,000 / (16 * 115,200)) = int(43.403)
   UART1_FBRD_R = 26;                    // FBRD = round(0.4028 * 64 ) = 26
                                         // 8 bit word length (no parity bits, one stop bit, FIFOs)
   UART1_LCRH_R = (UART_LCRH_WLEN_8|UART_LCRH_FEN);
   UART1_CTL_R |= UART_CTL_UARTEN;       // enable UART
-  GPIO_PORTB_AFSEL_R |= 0x03;           // enable alt funct on PA1-0
-  GPIO_PORTB_DEN_R |= 0x03;             // enable digital I/O on PA1-0
-                                        // configure PA1-0 as UART
-  GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFFFF00)+0x00000011;
-  GPIO_PORTB_AMSEL_R &= ~0x03;          // disable analog functionality on PA
 }
 
 //------------UART_InChar------------
@@ -357,6 +353,16 @@ void Output_Init(void){int ret_val; FILE *fptr;
 void Output_Init(void){
   UART_Init();
 }
+
+//---------------------OutCRLF---------------------
+// Output a CR,LF to UART to go to a new line
+// Input: none
+// Output: none
+void OutCRLF(void){
+  UART_OutChar(CR);
+  UART_OutChar(LF);
+}
+
 #endif
 
 

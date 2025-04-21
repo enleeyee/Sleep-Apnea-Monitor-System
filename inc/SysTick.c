@@ -38,6 +38,12 @@
 #define NVIC_ST_CTRL_ENABLE     0x00000001  // Counter mode
 #define NVIC_ST_RELOAD_M        0x00FFFFFF  // Counter load value
 
+static volatile uint32_t millis = 0;
+
+void SysTick_Handler(void) {
+	millis++;
+}
+
 // Initialize SysTick with busy wait running at bus clock.
 void SysTick_Init(void){
   NVIC_ST_CTRL_R = 0;                   // disable SysTick during setup
@@ -96,4 +102,8 @@ void SysTick_Start(void){
 // end the stopwatch, and return elased time in bus cycles
 uint32_t SysTick_Stop(void){
   return (Time-NVIC_ST_CURRENT_R)&0x00FFFFFF;
+}
+
+uint32_t SysTick_Millis(void) {
+	return millis;
 }

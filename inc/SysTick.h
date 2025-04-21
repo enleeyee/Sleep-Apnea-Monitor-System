@@ -31,6 +31,8 @@
  */
 #include <stdint.h>
 
+void SysTick_Handler(void);
+
 // Initialize SysTick with busy wait running at bus clock.
 void SysTick_Init(void);
 
@@ -56,3 +58,5 @@ void SysTick_Start(void);
 // end the stopwatch, and return elased time in bus cycles
 uint32_t SysTick_Stop(void);
 
+// return the 
+uint32_t SysTick_Millis(void);
