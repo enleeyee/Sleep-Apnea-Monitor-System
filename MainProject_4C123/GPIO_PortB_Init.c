@@ -2,7 +2,12 @@
 #include <stdint.h>
 #include "../inc/tm4c123gh6pm.h"
 
-// Initializes PB0-PB3 for UART (PB0/PB1) and I2C (PB2/PB3)
+//------------GPIO_PortB_Init------------
+// Initializes Port B pins PB0–PB3:
+// PB0, PB1 for UART1 (RX/TX)
+// PB2, PB3 for I2C0 (SCL/SDA)
+// Input: none
+// Output: none
 void GPIO_PortB_Init(void){
   SYSCTL_RCGCGPIO_R |= 0x02;        // Enable clock for Port B
   while((SYSCTL_PRGPIO_R & 0x02) == 0); // Wait until ready

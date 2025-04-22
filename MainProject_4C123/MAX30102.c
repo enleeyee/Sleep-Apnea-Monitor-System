@@ -69,11 +69,19 @@ uint16_t MAX30102_ReadIR(void){
   return value;
 }
 
+//------------MAX30102_ReadRed------------
+// Reads the 16-bit Red LED sensor data from FIFO
+// Input: none
+// Output: 16-bit unsigned value (Red pulse data)
 uint16_t MAX30102_ReadRed(void) {
   I2C_Send1(MAX30102_ADDR, 0x07);           // Set FIFO data pointer
   return I2C_Recv2(MAX30102_ADDR);          // Read 16-bit Red LED data
 }
 
+//------------MAX30102_CheckForBeat------------
+// Detects heartbeat by analyzing IR signal waveform transitions
+// Input: 16-bit IR LED value
+// Output: true if beat detected, false otherwise
 bool MAX30102_CheckForBeat(uint16_t irValue){
   static uint16_t prevIR = 0;
   static uint16_t prevDiff = 0;
@@ -111,6 +119,10 @@ bool MAX30102_CheckForBeat(uint16_t irValue){
   return beatDetected;
 }
 
+//------------MAX30102_CalculateSpO2------------
+// Calculates estimated SpO2 from IR and Red values
+// Input: red and ir sensor values
+// Output: estimated SpO2 percentage (0.0 - 100.0)
 float MAX30102_CalculateSpO2(uint16_t red, uint16_t ir) {
   // Prevent division by zero
   if (red == 0 || ir == 0) return 0;
@@ -124,10 +136,18 @@ float MAX30102_CalculateSpO2(uint16_t red, uint16_t ir) {
   return spo2;
 }
 
+//------------MAX30102_GetBPM------------
+// Returns the most recent BPM reading
+// Input: none
+// Output: BPM value as float
 float MAX30102_GetBPM(void){
   return beatsPerMinute;
 }
 
+//------------MAX30102_GetAvgBPM------------
+// Returns the average BPM over last few beats
+// Input: none
+// Output: averaged BPM value
 float MAX30102_GetAvgBPM(void){
   return beatAvg;
 }

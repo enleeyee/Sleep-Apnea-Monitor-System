@@ -1,5 +1,10 @@
+// font.c
 #include "font.h"
 
+//------------ASCII_font5x8------------
+// 5x8 font array for 96 printable ASCII characters (from 0x20 to 0x7F)
+// Each character is represented by 5 bytes (columns) for vertical display
+// Format: ASCII_font5x8[character - 0x20][5]
 // Sample only: defines 'A' through 'D' characters (offset from ASCII 0x20)
 const unsigned char ASCII_font5x8[96][5] = {
   // Space to '/'
@@ -105,7 +110,6 @@ const unsigned char ASCII_font5x8[96][5] = {
 	{0x0C,0x50,0x50,0x50,0x3C}, // y
 	{0x44,0x64,0x54,0x4C,0x44}, // z
 
-
   // { to DEL
   {0x00,0x08,0x36,0x41,0x00}, // {
   {0x00,0x00,0x7F,0x00,0x00}, // |
@@ -114,7 +118,10 @@ const unsigned char ASCII_font5x8[96][5] = {
   {0x00,0x06,0x09,0x09,0x06}  // DEL (smiley or placeholder)
 };
 
-
+//------------bigNumbers------------
+// 3x5 font array for rendering large digits (0–9)
+// Each digit is represented by a 5-row by 3-column block of bytes
+// Format: bigNumbers[digit][row][column]
 const unsigned char bigNumbers[10][5][3] = {
     // 0
     {

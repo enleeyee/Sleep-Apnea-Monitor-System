@@ -1,4 +1,9 @@
 // main.c
+// Entry point of TM4C123-based health monitor project
+// Reads pulse and SpO2 data, displays results on OLED,
+// transmits values via HC-05 Bluetooth, and detects sleep apnea
+// Input: none
+// Output: Continuous display and Bluetooth transmission
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -74,7 +79,10 @@ int main(void) {
   }
 }
 
-// ======= Initialization =======
+//------------System_Init------------
+// Initializes system clock, GPIOs, I2C, UART, MAX30102 sensor, OLED, and HC-05 Bluetooth
+// Input: none
+// Output: none
 void System_Init(void) {
   PLL_Init(Bus80MHz);
   SysTick_Init();
@@ -90,6 +98,10 @@ void System_Init(void) {
   OLED_TurnOn();
 }
 
+//------------Peripheral_Scan------------
+// Scans all 7-bit I2C addresses to detect connected devices
+// Input: none
+// Output: Detected addresses printed to UART
 void Peripheral_Scan(void) {
   for (uint8_t addr = 0; addr < 128; addr++) {
     I2C_Send1(addr, 0xFF);
@@ -104,6 +116,10 @@ void Peripheral_Scan(void) {
   }
 }
 
+//------------Display_InitScreen------------
+// Fills and clears OLED to visually confirm OLED initialization
+// Input: none
+// Output: OLED is cleared and ready for display
 void Display_InitScreen(void) {
   for (uint8_t i = 0; i < 8; i++) {
     OLED_command(0xB0 + i);
@@ -116,7 +132,10 @@ void Display_InitScreen(void) {
   OLED_clearDisplay();
 }
 
-// ======= Display & Bluetooth Update =======
+//------------Update_Display_Bluetooth------------
+// Updates OLED display with BPM and SpO2 values and sends JSON to Bluetooth
+// Input: bpm (beats per minute), spo2 (oxygen level percentage)
+// Output: OLED updated, data sent over HC-05
 void Update_Display_Bluetooth(uint8_t bpm, uint8_t spo2) {
   char line1[16], line2[16];
   sprintf(line1, "BPM: %3u", bpm);
@@ -133,7 +152,12 @@ void Update_Display_Bluetooth(uint8_t bpm, uint8_t spo2) {
   HC05_WriteString(btjson);
 }
 
-// ======= Sleep Apnea Detection =======
+//------------Check_SleepApnea------------
+// Detects sleep apnea if SpO2 is below 90% for more than 10 seconds
+// Input: spo2 - current oxygen level, now - current time in ms,
+//        apneaStartTime - pointer to timer of low spo2 duration,
+//        apneaDetected - pointer to flag tracking detection state
+// Output: Sends apnea alert via Bluetooth and updates OLED if condition met
 void Check_SleepApnea(float spo2, uint32_t now, uint32_t *apneaStartTime, bool *apneaDetected) {
   if (spo2 < 90) {
     if (!(*apneaDetected)) {
@@ -149,6 +173,10 @@ void Check_SleepApnea(float spo2, uint32_t now, uint32_t *apneaStartTime, bool *
   }
 }
 
+//------------Check_HeartbeatLoss------------
+// Detects heartbeat loss if no beat is detected for more than 10 seconds
+// Input: now - current time in ms, lastBeatTime - pointer to time of last beat
+// Output: Sends no-beat event via Bluetooth and updates OLED
 void Check_HeartbeatLoss(uint32_t now, uint32_t *lastBeatTime) {
   if ((now - *lastBeatTime) > 10000) {
     HC05_WriteString("{\"event\":\"Apnea Detected - No Heartbeat\"}\r\n");
