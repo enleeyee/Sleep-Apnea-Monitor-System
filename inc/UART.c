@@ -23,14 +23,12 @@
  http://users.ece.utexas.edu/~valvano/
  */
 
-// U0Rx (VCP receive) connected to PA0
-// U0Tx (VCP transmit) connected to PA1
+// UART5: TX = PE5, RX = PE4
 
 #include <stdint.h>
 #include <stdio.h>
 #include "../inc/UART.h"
 #include "../inc/tm4c123gh6pm.h"
-
 
 #define UART_FR_TXFF            0x00000020  // UART Transmit FIFO Full
 #define UART_FR_RXFE            0x00000010  // UART Receive FIFO Empty
@@ -44,15 +42,22 @@
 // Input: none
 // Output: none
 void UART_Init(void){
-  SYSCTL_RCGCUART_R |= 0x02;            // activate UART1
-	while((SYSCTL_PRUART_R & 0x02) == 0){}; // wait for UART1 ready
-		
-  UART1_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
-  UART1_IBRD_R = 43;                    // IBRD = int(80,000,000 / (16 * 115,200)) = int(43.403)
-  UART1_FBRD_R = 26;                    // FBRD = round(0.4028 * 64 ) = 26
-                                        // 8 bit word length (no parity bits, one stop bit, FIFOs)
-  UART1_LCRH_R = (UART_LCRH_WLEN_8|UART_LCRH_FEN);
-  UART1_CTL_R |= UART_CTL_UARTEN;       // enable UART
+  SYSCTL_RCGCUART_R |= 0x20;            // enable clock to UART5
+  SYSCTL_RCGCGPIO_R |= 0x10;            // enable clock to GPIOE
+  while((SYSCTL_PRGPIO_R & 0x10) == 0); // wait for GPIOE to be ready
+
+  UART5_CTL_R &= ~UART_CTL_UARTEN;     // disable UART5
+  UART5_IBRD_R = 43;                    // IBRD = int(80,000,000 / (16 * 115,200)) = int(43.403)
+  UART5_FBRD_R = 26;                    // FBRD = round(0.4028 * 64 ) = 26
+  UART5_LCRH_R = (UART_LCRH_WLEN_8 | UART_LCRH_FEN); // 8-bit, FIFO enabled
+  UART5_CTL_R |= (UART_CTL_UARTEN | UART_CTL_TXE | UART_CTL_RXE); // Enable UART5
+
+  // PE4 = U5RX, PE5 = U5TX
+  GPIO_PORTE_AFSEL_R |= 0x30;          // enable alt function on PE4, PE5
+  GPIO_PORTE_DEN_R |= 0x30;            // digital enable on PE4, PE5
+  GPIO_PORTE_AMSEL_R &= ~0x30;         // disable analog on PE4, PE5
+  GPIO_PORTE_PCTL_R &= ~0x00FF0000;    // clear bits for PE4, PE5
+  GPIO_PORTE_PCTL_R |= 0x00110000;     // assign U5RX and U5TX to PE4, PE5
 }
 
 //------------UART_InChar------------
@@ -60,16 +65,16 @@ void UART_Init(void){
 // Input: none
 // Output: ASCII code for key typed
 char UART_InChar(void){
-  while((UART1_FR_R&UART_FR_RXFE) != 0);
-  return((char)(UART1_DR_R&0xFF));
+  while((UART5_FR_R&UART_FR_RXFE) != 0);
+  return((char)(UART5_DR_R&0xFF));
 }
 //------------UART_OutChar------------
 // Output 8-bit to serial port
 // Input: letter is an 8-bit ASCII character to be transferred
 // Output: none
 void UART_OutChar(char data){
-  while((UART1_FR_R&UART_FR_TXFF) != 0);
-  UART1_DR_R = data;
+  while((UART5_FR_R&UART_FR_TXFF) != 0);
+  UART5_DR_R = data;
 }
 
 //------------UART_OutString------------
