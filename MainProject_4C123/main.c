@@ -90,8 +90,8 @@ void System_Init(void) {
   I2C_Init();
   UART_Init();
   MAX30102_Init();
-  HC05_Init();
-  HC05_WriteString("Bluetooth ready...\r\n");
+  //HC05_Init();
+  //HC05_WriteString("Bluetooth ready...\r\n");
   SysTick80_Wait10ms(10);
   I2C1_Init();
   OLED_Init();
@@ -147,9 +147,9 @@ void Update_Display_Bluetooth(uint8_t bpm, uint8_t spo2) {
   OLED_setXY(2, 0); for (int i = 0; i < 16; i++) OLED_data(' ');
   OLED_sendStrXY(line2, 2, 0);
 
-  char btjson[64];
-  sprintf(btjson, "{\"bpm\":%u,\"spo2\":%u}\r\n", bpm, spo2);
-  HC05_WriteString(btjson);
+  //char btjson[64];
+  //sprintf(btjson, "{\"bpm\":%u,\"spo2\":%u}\r\n", bpm, spo2);
+  //HC05_WriteString(btjson);
 }
 
 //------------Check_SleepApnea------------
