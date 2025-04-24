@@ -44,7 +44,8 @@
 void UART_Init(void){
   SYSCTL_RCGCUART_R |= 0x20;            // enable clock to UART5
   SYSCTL_RCGCGPIO_R |= 0x10;            // enable clock to GPIOE
-  while((SYSCTL_PRGPIO_R & 0x10) == 0); // wait for GPIOE to be ready
+	while((SYSCTL_PRGPIO_R & 0x10) == 0); // Wait for Port E ready
+	while((SYSCTL_PRUART_R & 0x20) == 0); // Wait for UART5 ready
 
   UART5_CTL_R &= ~UART_CTL_UARTEN;     // disable UART5
   UART5_IBRD_R = 43;                    // IBRD = int(80,000,000 / (16 * 115,200)) = int(43.403)

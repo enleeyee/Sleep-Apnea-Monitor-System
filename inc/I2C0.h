@@ -72,3 +72,7 @@ uint32_t I2C_Send2(int8_t slave, uint8_t data1, uint8_t data2);
 uint32_t I2C_Send3(int8_t slave, uint8_t data1, uint8_t data2, uint8_t data3);
 
 void I2C_DebugStatus(void);
+
+void I2C0_Init(void); // Alias for I2C_Init
+void I2C0_Send2(uint8_t slave, uint8_t reg, uint8_t data);
+uint8_t I2C0_Recv1(uint8_t slave, uint8_t reg);

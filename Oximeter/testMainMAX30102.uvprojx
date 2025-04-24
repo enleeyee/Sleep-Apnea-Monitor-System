@@ -10,7 +10,6 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pArmCC>5060960::V5.06 update 7 (build 960)::.\ARMCC</pArmCC>
       <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
@@ -50,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>MainProject_4C123</OutputName>
+          <OutputName>testMainMAX30102</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -135,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4096</DriverSelection>
+            <DriverSelection>-1</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -184,7 +183,7 @@
             <hadIRAM>1</hadIRAM>
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
-            <RvdsVP>1</RvdsVP>
+            <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>0</hadIRAM2>
@@ -197,7 +196,7 @@
             <RoSelD>3</RoSelD>
             <RwSelD>3</RwSelD>
             <CodeSel>0</CodeSel>
-            <OptFeed>1</OptFeed>
+            <OptFeed>0</OptFeed>
             <NoZi1>0</NoZi1>
             <NoZi2>0</NoZi2>
             <NoZi3>0</NoZi3>
@@ -337,7 +336,7 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls>--c99 -DTARGET_IS_TM4C123_RB1</MiscControls>
+              <MiscControls>--c99</MiscControls>
               <Define>PART_TM4C123GH6PM</Define>
               <Undefine></Undefine>
               <IncludePath>..;..\..\..</IncludePath>
@@ -385,29 +384,14 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>UART.c</FileName>
+              <FileName>MAX30102.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\inc\UART.c</FilePath>
+              <FilePath>.\MAX30102.c</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>PLL.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\inc\PLL.c</FilePath>
-            </File>
-            <File>
-              <FileName>startup.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\startup.s</FilePath>
-            </File>
-            <File>
-              <FileName>SysTick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\inc\SysTick.c</FilePath>
+              <FileName>MAX30102.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MAX30102.h</FilePath>
             </File>
             <File>
               <FileName>I2C0.c</FileName>
@@ -415,49 +399,24 @@
               <FilePath>..\inc\I2C0.c</FilePath>
             </File>
             <File>
-              <FileName>GPIO_PortB_Init.c</FileName>
+              <FileName>PLL.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\GPIO_PortB_Init.c</FilePath>
+              <FilePath>..\inc\PLL.c</FilePath>
             </File>
             <File>
-              <FileName>ssd1306.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ssd1306.h</FilePath>
-            </File>
-            <File>
-              <FileName>ssd1306.c</FileName>
+              <FileName>UART.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\ssd1306.c</FilePath>
+              <FilePath>..\inc\UART.c</FilePath>
             </File>
             <File>
-              <FileName>font.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\font.h</FilePath>
+              <FileName>startup.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\startup.s</FilePath>
             </File>
             <File>
-              <FileName>font.c</FileName>
+              <FileName>testmain.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\font.c</FilePath>
-            </File>
-            <File>
-              <FileName>hc05.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\hc05.h</FilePath>
-            </File>
-            <File>
-              <FileName>hc05.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\hc05.c</FilePath>
-            </File>
-            <File>
-              <FileName>SSI2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\SSI2.c</FilePath>
-            </File>
-            <File>
-              <FileName>SSI2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\SSI2.h</FilePath>
+              <FilePath>.\testmain.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -480,14 +439,5 @@
     </components>
     <files/>
   </RTE>
-
-  <LayerInfo>
-    <Layers>
-      <Layer>
-        <LayName>MainProject_4C123</LayName>
-        <LayPrjMark>1</LayPrjMark>
-      </Layer>
-    </Layers>
-  </LayerInfo>
 
 </Project>

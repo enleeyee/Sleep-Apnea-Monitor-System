@@ -96,16 +96,16 @@ void OLED_setXY(uint8_t row, uint8_t col);
 //------------OLED_sendCharXY------------
 // Displays a single character at specified coordinates
 // Input: c - ASCII character
-//        x - page row (0–7)
-//        y - column index (0–15)
+//        x - page row (0?7)
+//        y - column index (0?15)
 // Output: none
 void OLED_sendCharXY(unsigned char c, int x, int y);
 
 //------------OLED_sendStrXY------------
 // Displays a string starting at specified coordinates
 // Input: str - pointer to null-terminated string
-//        x - page row (0–7)
-//        y - starting column (0–15)
+//        x - page row (0?7)
+//        y - starting column (0?15)
 // Output: none
 void OLED_sendStrXY(char *str, int x, int y);
 

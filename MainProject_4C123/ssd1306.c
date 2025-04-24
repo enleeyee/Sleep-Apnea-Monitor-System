@@ -109,8 +109,8 @@ void OLED_clearDisplay(void) {
 
 //------------OLED_setXY------------
 // Sets the cursor to a specific row and column
-// Input: row - page number (0–7)
-//        col - character column (0–127 / 8)
+// Input: row - page number (0?7)
+//        col - character column (0?127 / 8)
 // Output: none
 void OLED_setXY(uint8_t row, uint8_t col) {
   OLED_command(0xB0 + row);
