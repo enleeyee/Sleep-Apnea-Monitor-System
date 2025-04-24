@@ -30,6 +30,9 @@ uint16_t bufferIndex = 0;       // Current position in buffer
 uint32_t lastBeatTime = 0;      // Timestamp of last detected beat
 uint8_t bpm = 0;                // Calculated BPM
 
+uint32_t apneaStartTime;
+bool apneaDetected;
+
 uint8_t constrain(uint16_t value, uint8_t min, uint8_t max) {
     if(value < min) return min;
     if(value > max) return max;
@@ -65,75 +68,14 @@ BeatDetector detector = {0};
 void System_Init(void);
 void Peripheral_Scan(void);
 void Display_InitScreen(void);
+uint8_t getSmoothedIR();
+bool detectBeat(uint8_t currentIR, uint32_t currentTime);
+uint8_t calculateBPM();
 void Update_Display_Bluetooth(uint8_t ir, uint8_t bpm, uint8_t spo2);
 void Check_SleepApnea(float spo2, uint32_t now, uint32_t *apneaStartTime, bool *apneaDetected);
 void Check_HeartbeatLoss(uint32_t now, uint32_t *lastBeatTime);
 void processSPI(void);
 void GPIOPortB_Handler(void);
-
-// Simple moving average to smooth the signal
-uint8_t getSmoothedIR() {
-    uint16_t sum = 0;
-    for (uint8_t i = 0; i < BUFFER_SIZE; i++) {
-        sum += irBuffer[i];
-    }
-    return sum / BUFFER_SIZE;
-}
-
-bool detectBeat(uint8_t currentIR, uint32_t currentTime) {
-    static uint8_t lastValue = 128;
-    static bool wasRising = false;
-    
-    // Detect slope direction
-    bool isRising = (currentIR > lastValue);
-    bool beatDetected = false;
-    
-    // Peak detection (transition from rising to falling)
-    if(wasRising && !isRising) {
-        // Validate peak height and timing
-        if((currentTime - detector.lastPeakTime) > (60000/MAX_BPM) &&
-           (currentIR > detector.lastPeakValue + 2)) {
-            beatDetected = true;
-            
-            // Store beat interval
-            if(detector.lastBeatTime != 0) {
-                detector.beatIntervals[detector.beatIndex] = 
-                    currentTime - detector.lastBeatTime;
-                detector.beatIndex = (detector.beatIndex + 1) % 4;
-            }
-            detector.lastBeatTime = currentTime;
-            detector.lastPeakTime = currentTime;
-            detector.lastPeakValue = currentIR;
-        }
-    }
-    
-    wasRising = isRising;
-    lastValue = currentIR;
-    return beatDetected;
-}
-
-// Calculate BPM from time between beats
-uint8_t calculateBPM() {
-    if(detector.lastBeatTime == 0) return 0;
-    
-    uint32_t avgInterval = 0;
-    uint8_t validCount = 0;
-    
-    // Average last 4 beat intervals
-    for(uint8_t i = 0; i < 4; i++) {
-        if(detector.beatIntervals[i] > 0) {
-            avgInterval += detector.beatIntervals[i];
-            validCount++;
-        }
-    }
-    
-    if(validCount == 0) return 0;
-    avgInterval /= validCount;
-    
-    // Calculate BPM (ms to minutes conversion)
-    uint16_t bpm = 60000 / avgInterval;
-    return constrain(bpm, MIN_BPM, MAX_BPM);
-}
 
 // ======= Main Function =======
 int main(void) {
@@ -163,44 +105,13 @@ int main(void) {
 						OutCRLF();
 						
 						Update_Display_Bluetooth(irValue, bpm, 98);
+            Check_SleepApnea(98, SysTick_Millis(), &apneaStartTime, &apneaDetected);
+            Check_HeartbeatLoss(SysTick_Millis(), &lastBeatTime);
 						
 						lastIR = irValue;
 				}
 		}
 }
-
-/*
-int main(void) {
-  System_Init();
-  Peripheral_Scan();
-  Display_InitScreen();
-
-  uint32_t apneaStartTime = 0, lastBeatTime = 0;
-  bool apneaDetected = false;
-
-  uint8_t bpm = 0, ir = 0;
-
-  while (1) {
-    if (SSI2_SR_R & 0x04) { // Data is available from Arduino
-      ir = SSI2_Recv();
-      while (!(SSI2_SR_R & 0x04));
-      bpm = SSI2_Recv();
-
-      UART_OutString("IR: ");
-      UART_OutUDec(ir);
-      UART_OutString(", BPM: ");
-      UART_OutUDec(bpm);
-      OutCRLF();
-
-      Update_Display_Bluetooth(bpm, 98); // Dummy SpO2 for now
-      Check_SleepApnea(98, SysTick_Millis(), &apneaStartTime, &apneaDetected);
-      Check_HeartbeatLoss(SysTick_Millis(), &lastBeatTime);
-    }
-
-    SysTick80_Wait10ms(10);
-  }
-}
-*/
 
 //------------System_Init------------
 // Initializes system clock, GPIOs, I2C, UART, MAX30102 sensor, OLED, and HC-05 Bluetooth
@@ -246,7 +157,6 @@ void Peripheral_Scan(void) {
   UART_OutString("Scan complete.\r\n");
 }
 
-
 //------------Display_InitScreen------------
 // Fills and clears OLED to visually confirm OLED initialization
 // Input: none
@@ -261,6 +171,83 @@ void Display_InitScreen(void) {
     }
   }
   OLED_clearDisplay();
+}
+
+//------------getSmoothedIR------------
+// Calculates the average IR value over a circular buffer to smooth signal noise
+// Input: none (uses global irBuffer)
+// Output: Averaged IR value
+uint8_t getSmoothedIR() {
+  uint16_t sum = 0;
+  for (uint8_t i = 0; i < BUFFER_SIZE; i++) {
+      sum += irBuffer[i];
+  }
+  return sum / BUFFER_SIZE;
+}
+
+//------------detectBeat------------
+// Detects heartbeat based on rising/falling slope transition of IR signal
+// Uses a simple peak detection method with timing and amplitude checks
+// Input: currentIR - latest IR sample value,
+//        currentTime - current time in ms from SysTick
+// Output: true if a heartbeat is detected, false otherwise
+bool detectBeat(uint8_t currentIR, uint32_t currentTime) {
+  static uint8_t lastValue = 128;
+  static bool wasRising = false;
+  
+  // Detect slope direction
+  bool isRising = (currentIR > lastValue);
+  bool beatDetected = false;
+  
+  // Peak detection (transition from rising to falling)
+  if(wasRising && !isRising) {
+      // Validate peak height and timing
+      if((currentTime - detector.lastPeakTime) > (60000/MAX_BPM) &&
+         (currentIR > detector.lastPeakValue + 2)) {
+          beatDetected = true;
+          
+          // Store beat interval
+          if(detector.lastBeatTime != 0) {
+              detector.beatIntervals[detector.beatIndex] = 
+                  currentTime - detector.lastBeatTime;
+              detector.beatIndex = (detector.beatIndex + 1) % 4;
+          }
+          detector.lastBeatTime = currentTime;
+          detector.lastPeakTime = currentTime;
+          detector.lastPeakValue = currentIR;
+      }
+  }
+  
+  wasRising = isRising;
+  lastValue = currentIR;
+  return beatDetected;
+}
+
+//------------calculateBPM------------
+// Computes the heart rate in BPM using the average of previous beat intervals
+// Ignores intervals of zero (no valid beat detected)
+// Input: none (uses global detector state)
+// Output: BPM value constrained to MIN_BPM–MAX_BPM range
+uint8_t calculateBPM() {
+  if(detector.lastBeatTime == 0) return 0;
+  
+  uint32_t avgInterval = 0;
+  uint8_t validCount = 0;
+  
+  // Average last 4 beat intervals
+  for(uint8_t i = 0; i < 4; i++) {
+      if(detector.beatIntervals[i] > 0) {
+          avgInterval += detector.beatIntervals[i];
+          validCount++;
+      }
+  }
+  
+  if(validCount == 0) return 0;
+  avgInterval /= validCount;
+  
+  // Calculate BPM (ms to minutes conversion)
+  uint16_t bpm = 60000 / avgInterval;
+  return constrain(bpm, MIN_BPM, MAX_BPM);
 }
 
 //------------Update_Display_Bluetooth------------
@@ -323,6 +310,11 @@ void Check_HeartbeatLoss(uint32_t now, uint32_t *lastBeatTime) {
   }
 }
 
+//------------GPIOPortB_Handler------------
+// Interrupt handler for GPIO Port B, triggered by rising edge on PB5 (SS from Arduino)
+// Confirms end of SPI frame when SS goes HIGH and reads all remaining bytes from SSI2 FIFO
+// Input: none (ISR triggered by hardware)
+// Output: Debug messages printed via UART
 void GPIOPortB_Handler(void) {
   if (GPIO_PORTB_RIS_R & 0x20) { // PB5 (SS) interrupt
     GPIO_PORTB_ICR_R = 0x20;     // Clear interrupt

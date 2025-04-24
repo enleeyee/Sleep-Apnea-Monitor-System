@@ -6,8 +6,6 @@
 // Configures:
 // PB0 = UART1 RX (HC-05 RX)
 // PB1 = UART1 TX (HC-05 TX)
-// PB2 = I2C0 SCL (OLED SCL Yellow)
-// PB3 = I2C0 SDA (OLED SDA Blue)
 // PB4 = SSI2CLK (Arduino SCK D13)
 // PB5 = SSI2Fss (Arduino SS D10)
 // PB6 = SSI2Rx (Arduino MOSI D11)
@@ -30,7 +28,6 @@ void GPIO_PortB_Init(void) {
   GPIO_PORTB_DIR_R &= ~0x20;    // Input
   GPIO_PORTB_PUR_R |= 0x20;     // Enable pull-up
 
-	/*
   // Configure SS pin interrupt
   GPIO_PORTB_DIR_R &= ~0x20;            // PB5 as input
   GPIO_PORTB_IS_R &= ~0x20;             // Edge-sensitive
@@ -41,5 +38,4 @@ void GPIO_PortB_Init(void) {
 
   NVIC_PRI0_R = (NVIC_PRI0_R & 0xFFFFFF00) | 0x40; // Priority 2
   NVIC_EN0_R |= 1 << 1;                 // Enable IRQ1 (Port B)
-	*/
 }
